@@ -1,0 +1,18 @@
+package baseball.exception;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class InputNumbersException {
+    private static final String ONLY_NUMBER_REGEX = "^[0-9]*$";
+    private static final int REQUIRE_NUMBER_SIZE = 3;
+
+    public void isOverlapNumber(String numberTypeString) {
+        Set<Integer> numSet = new HashSet<>();
+        for (int i = 0; i < numberTypeString.length(); i++) {
+            numSet.add(numberTypeString.charAt(i) - '0');
+        }
+        if (numSet.size() != REQUIRE_NUMBER_SIZE)
+            throw new IllegalArgumentException("중복되지 않은 수를 입력해주세요.");
+    }
+}
