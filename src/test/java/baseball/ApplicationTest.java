@@ -1,8 +1,11 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.User;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -60,5 +63,19 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(computer.getComputerGameNumbers().size()).isEqualTo(3);
+    }
+
+    @Test
+    void 유저_입력값_테스트() {
+        // given
+        User user = new User();
+        List<Integer> userInputNumbers = List.of(1, 2, 3);
+        final int PERMITTED_LENGTH = 3;
+
+        // when
+        user.setUserGameNumbers(userInputNumbers);
+
+        // then
+        assertThat(user.getUserGameNumbers().size()).isEqualTo(PERMITTED_LENGTH);
     }
 }
