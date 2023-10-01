@@ -24,11 +24,14 @@ public class GamePlayController {
     public void startGame() {
         computer.setupGameNumber();
         while (!gameStatusService.isExitGame()) {
-            System.out.println(computer.getComputerGameNumbers()); // 이 라인이 필요한가?
-            user.setUserGameNumbers(userInputView.setUserGameNumbers());
-            strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(), computer.getComputerGameNumbers());
+            inputUserNumberAndCalculate();
             getGameResult();
         }
+    }
+
+    public void inputUserNumberAndCalculate() {
+        user.setUserGameNumbers(userInputView.setUserGameNumbers());
+        strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(), computer.getComputerGameNumbers());
     }
 
     public void getGameResult() {
