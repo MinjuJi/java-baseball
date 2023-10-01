@@ -109,4 +109,23 @@ class ApplicationTest extends NsTest {
         // then
         assertThat(ballCount).isEqualTo(THREE_BALL);
     }
+
+    @Test
+    void 컴퓨터와_유저_입력_값_비교_테스트() {
+        // given
+        GameNumberCalculatorService gameNumberCalculatorService = new GameNumberCalculatorService();
+        List<Integer> computerNumbers = List.of(1, 3, 2);
+        List<Integer> userNumbers = List.of(1, 2, 3);
+        final int STRIKE_INDEX = 0;
+        final int BALL_INDEX = 1;
+        final int STRIKE_COUNT = 1;
+        final int BALL_COUNT = 2;
+
+        // when
+        List<Integer> result = gameNumberCalculatorService.calculateGameNumber(userNumbers, computerNumbers);
+
+        // then
+        assertThat(result.get(STRIKE_INDEX)).isEqualTo(STRIKE_COUNT);
+        assertThat(result.get(BALL_INDEX)).isEqualTo(BALL_COUNT);
+    }
 }
