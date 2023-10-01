@@ -13,13 +13,17 @@ import java.util.List;
 public class GamePlayController {
     private static final int STRIKE_INDEX = 0;
     private static final int THREE_STRIKE = 3;
-    private final GameNumberCalculatorService gameNumberCalculatorService = new GameNumberCalculatorService();
     private final UserInputView userInputView = new UserInputView();
     private final GameResultView gameResultView = new GameResultView();
     private final GameStatusService gameStatusService = new GameStatusService();
+    private final GameNumberCalculatorService gameNumberCalculatorService = new GameNumberCalculatorService();
+    private List<Integer> strikeAndBallCount = new ArrayList<>();
     private Computer computer = new Computer();
     private User user = new User();
-    private List<Integer> strikeAndBallCount = new ArrayList<>();
+
+    public GamePlayController() {
+        gameResultView.printCreateController();
+    }
 
     public void startGame() {
         computer.setupGameNumber();
@@ -31,7 +35,8 @@ public class GamePlayController {
 
     public void inputUserNumberAndCalculate() {
         user.setUserGameNumbers(userInputView.setUserGameNumbers());
-        strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(), computer.getComputerGameNumbers());
+        strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(),
+                computer.getComputerGameNumbers());
     }
 
     public void getGameResult() {
