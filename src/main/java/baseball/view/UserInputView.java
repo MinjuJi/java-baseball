@@ -1,21 +1,36 @@
 package baseball.view;
 
 import baseball.exception.InputNumbersException;
-import baseball.util.StringNumToIntegerNumListParser;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.util.StringNumToIntegerNumListParser.stringNumToIntegerNumListParser;
+
 public class UserInputView {
     private List<Integer> userGameNumbers = new ArrayList<>();
     private InputNumbersException inputNumbersException = new InputNumbersException();
+    private String userInput;
 
     public List<Integer> setUserGameNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String numberTypeOfSting = Console.readLine();
-        inputNumbersException.checkValidOfUserInput(numberTypeOfSting);
-        userGameNumbers = StringNumToIntegerNumListParser.stringNumToIntegerNumListParser(numberTypeOfSting);
+
         return userGameNumbers;
+    }
+
+    public void printQuestion() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public void getUserInput() {
+        userInput = Console.readLine();
+    }
+
+    public void checkUserInputException(String userInput) {
+        inputNumbersException.checkValidOfUserInput(userInput);
+    }
+
+    public void toIntegerList(String userInput) {
+        userGameNumbers = stringNumToIntegerNumListParser(userInput);
     }
 }
