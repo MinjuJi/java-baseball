@@ -14,7 +14,10 @@ public class UserInputView {
     private String userInput;
 
     public List<Integer> setUserGameNumbers() {
-
+        printQuestion();
+        getUserInput();
+        checkUserInputException(userInput);
+        toIntegerList(userInput);
         return userGameNumbers;
     }
 
