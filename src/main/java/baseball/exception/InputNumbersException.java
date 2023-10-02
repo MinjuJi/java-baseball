@@ -30,7 +30,7 @@ public class InputNumbersException {
         for (int i = 0; i < numberTypeString.length(); i++) {
             numSet.add(numberTypeString.charAt(i) - '0');
         }
-        if (isNumSetSizeEqualsPermittedSize(numSet))
+        if (!isNumSetSizeEqualsPermittedSize(numSet))
             throw new IllegalArgumentException("중복되지 않은 수를 입력해주세요.");
     }
 
