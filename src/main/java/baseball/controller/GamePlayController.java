@@ -26,7 +26,7 @@ public class GamePlayController {
     }
 
     public void startGame() {
-        computer.setupGameNumber();
+        computer.setupGameNumbers();
         while (!gameStatusService.isExitGame()) {
             inputUserNumber();
             calculateStrikeAndBallCount();

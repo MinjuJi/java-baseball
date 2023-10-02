@@ -61,7 +61,7 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
 
         // when
-        computer.setupGameNumber();
+        computer.setupGameNumbers();
 
         // then
         assertThat(computer.getComputerGameNumbers().size()).isEqualTo(3);

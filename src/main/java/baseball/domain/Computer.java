@@ -12,7 +12,7 @@ public class Computer {
         return computerGameNumbers;
     }
 
-    public void setupGameNumber() {
+    public void setupGameNumbers() {
         computerGameNumbers = generateComputerGameNumber.generateComputerGameNumber();
     }
 }

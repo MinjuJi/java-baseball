@@ -19,7 +19,7 @@ public class GameStatusService {
 
     public void setNextGameStatus(int askNextGameChoice, Computer computer) {
         if (askNextGameChoice == RESTART_GAME)
-            computer.setupGameNumber();
+            computer.setupGameNumbers();
         if (askNextGameChoice == END_GAME)
             exitGame = true;
     }
