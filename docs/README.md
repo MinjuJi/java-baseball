@@ -28,7 +28,7 @@
         - 유저의 입력 값을 받고, 예외처리를 진행 한 후 유저의 입력을 저장해주는 기능
     - GameResultView
         - 게임의 결과를 바탕으로 유저에게 적절한 출력을 내려주는 기능
-    - UserInputView
+    - NextGameUserInputView
         - 게임 종료 후 다음 게임을 위해 유저가 입력하는 값을 받고 저장해주는 기능
 
 - Service
