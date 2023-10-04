@@ -19,10 +19,8 @@ public class InputNumbersException {
     }
 
     public void isContainedOnlyNumber(String numberTypeOfString) {
-        for (int i = 0; i < numberTypeOfString.length(); i++) {
-            if (!isUserInputContainsOnlyNumber(numberTypeOfString))
-                throw new IllegalArgumentException("1~9 숫자만 입력해주세요,");
-        }
+        if (!isUserInputContainsOnlyNumber(numberTypeOfString))
+            throw new IllegalArgumentException("1~9 숫자만 입력해주세요,");
     }
 
     public void isOverlapNumber(String numberTypeString) {
