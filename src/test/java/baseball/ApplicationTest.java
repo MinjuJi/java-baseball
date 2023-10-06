@@ -3,9 +3,13 @@ package baseball;
 import baseball.domain.Computer;
 import baseball.exception.NextGamePlayException;
 import baseball.service.GameNumberCalculatorService;
+import baseball.view.GameResultView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -100,6 +104,27 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 낫싱_테스트() {
+        // given
+        List<Integer> strikeAndBallCount = List.of(0, 0);
+        GameResultView gameResultView = new GameResultView();
+
+        // ByteArrayOutputStream 클래스의 객체를 생성()
+        OutputStream result = new ByteArrayOutputStream();
+
+        // 표준 출력을 result 스트림으로 리디렉션. 즉 콘솔에 출력되는 내용을 result 스트림에 출력(저장)
+        System.setOut(new PrintStream(result));
+
+        // when
+        gameResultView.printNotThreeStrikeResult(strikeAndBallCount); // "낫싱" 출력
+
+        // then
+        assertThat(result.toString().strip()).isEqualTo("낫싱");
+        // result.toString().strip()는 result 스트림에 저장된 내용을 문자열로 변환하고 앞뒤 공백을 제거
+        // strip() 메소드 필수! 없으면 테스트 실패
+    }
+
+    @Test
     void 게임종료_후_입력_값_숫자_예외_테스트() {
         // given
         String gameStatusNumber = "3";
@@ -120,6 +145,4 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> nextGamePlayException.isRightLength(gameStatusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
 }
